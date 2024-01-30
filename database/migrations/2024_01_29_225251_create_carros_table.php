@@ -50,10 +50,7 @@ class CreateCarrosTable extends Migration
             $table->float('porcentagem_maxima');
             $table->float('valor'); 
             $table->boolean('vendido')->nullable();
-
-            $table->unsignedBigInteger('fotos')->nullable();
             
-            $table->foreign('fotos')->references('id')->on('imagem_carros')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
