@@ -40,5 +40,6 @@ class Moto extends Model
         "valor",
         "vendido",
 
+        'fotos'
     ];
 }

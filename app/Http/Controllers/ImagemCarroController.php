@@ -35,32 +35,32 @@ class ImagemCarroController extends Controller
      */
     public function store(Request $request)
     {
-        $imagem1 = $request->file('img1');
-        $imagem2 = $request->file('img2');
-        $imagem3 = $request->file('img3');
-
-        if($imagem1){
-            $imagem1_urn = $imagem1->store('imagens', 'public');
-            $response = $this->imagem->create([
-                'img1' => $imagem1_urn
-            ]);
-
-        }else if($imagem2){
-            $imagem2_urn = $imagem2->store('imagens', 'public');
-            $response = $this->imagem->create([
-                'img2' => $imagem2_urn
-            ]);
-
-        }else if($imagem3){
-            $imagem3_urn = $imagem3->store('imagens', 'public');
-            $response = $this->imagem->create([
-                'img3' => $imagem3_urn
-            ]);
+        $img1 = $request->file('img1');
+        if($img1){
+            $urn1 = $img1->store('imagens', 'public');
         }
+
+        $img2 = $request->file('img2');
+        if($img2){
+            $urn2 = $img2->store('imagens', 'public');
+        }
+
+        $img3 = $request->file('img3');
+        if($img3){
+            $urn3 = $img3->store('imagens', 'public');
+        }
+        $response = $this->imagem->create([
+            'img1' => $urn1,
+            'img2' => $urn2,
+            'img3' => $urn3
+        ]);
+
         if($response == NULL){
-            return response()->json(['erro' => 'Dados não encontrados!'], 404);
+            return response()->json(['erro' => 'Dados nao encontrados!'], 404);
         }
-        return response()->json($response, 200);
+
+
+        return response()->json($request, 200);
     }
 
     /**

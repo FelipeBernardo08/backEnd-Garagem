@@ -42,6 +42,9 @@ class CreateMotosTable extends Migration
             $table->float('valor');
             $table->boolean('vendido')->nullable();
 
+            $table->unsignedBigInteger('fotos')->nullable();
+            
+            $table->foreign('fotos')->references('id')->on('imagem_motos')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });

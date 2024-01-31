@@ -49,6 +49,11 @@ class Carro extends Model
         "valor",
         "vendido",
 
+        'fotos'
     ];
 
+    public function fotos()
+    {
+        return $this->belongsTo(ImagemCarro::class, 'fotos');
+    }
 }

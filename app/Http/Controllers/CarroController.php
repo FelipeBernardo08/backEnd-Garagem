@@ -50,7 +50,7 @@ class CarroController extends Controller
      */
     public function show($id)
     {
-        $response = $this->carro->find($id);
+        $response = $this->carro->with('fotos')->find($id);
         if($response == NULL){
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
         }
