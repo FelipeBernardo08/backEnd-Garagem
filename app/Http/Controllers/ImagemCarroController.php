@@ -38,17 +38,24 @@ class ImagemCarroController extends Controller
         $img1 = $request->file('img1');
         if($img1){
             $urn1 = $img1->store('imagens', 'public');
+        }else{
+            $urn1 = null;
         }
 
         $img2 = $request->file('img2');
         if($img2){
             $urn2 = $img2->store('imagens', 'public');
+        }else{
+            $urn2 = null;
         }
 
         $img3 = $request->file('img3');
         if($img3){
             $urn3 = $img3->store('imagens', 'public');
+        }else{
+            $urn3 = null;
         }
+
         $response = $this->imagem->create([
             'img1' => $urn1,
             'img2' => $urn2,
@@ -88,7 +95,6 @@ class ImagemCarroController extends Controller
     public function update(Request $request, $id)
     {
         $response = $this->imagem->find($id);
-        // dd($imagem1 = $request->file('img2'));
         if($response == NULL){
             return response()->json(['erro' => 'Dados nao encontrados'], 404);
         }
@@ -106,11 +112,23 @@ class ImagemCarroController extends Controller
             $response->update([
                 'img1' => $imagem_urn
             ]);
+        }else{
+            Storage::disk('public')->delete($img1);
+            $imagem_urn = null;
+            $response->update([
+                'img1' => $imagem_urn
+            ]);
         }
 
         if($imagem2){
             Storage::disk('public')->delete($img2);
             $imagem_urn = $imagem2->store('imagens', 'public');
+            $response->update([
+                'img2' => $imagem_urn
+            ]);
+        }else{
+            Storage::disk('public')->delete($img2);
+            $imagem_urn = null;
             $response->update([
                 'img2' => $imagem_urn
             ]);
@@ -122,36 +140,14 @@ class ImagemCarroController extends Controller
             $response->update([
                 'img3' => $imagem_urn
             ]);
+        }else{
+            Storage::disk('public')->delete($img3);
+            $imagem_urn = null;
+            $response->update([
+                'img3' => $imagem_urn
+            ]);
         }
         return response()->json($response, 200);
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * 
-     * @param Integer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $response = $this->imagem->find($id);
-        if($response == NULL){
-            return response()->json(['erro' => 'Dados não encontrados!'], 404);
-        }
-        if($response->img1){
-            Storage::disk('public')->delete($response->img1);
-            $response->delete($response->img1);
-        }
-        if($response->img2){
-            Storage::disk('public')->delete($response->img2);
-            $response->delete($response->img2);
-        }
-        if($response->img3){
-            Storage::disk('public')->delete($response->img3);
-            $response->delete($response->img3);
-        }
-        return response()->json(['msg' => 'Dados excluidos com sucesso!'], 200);
     }
 }
