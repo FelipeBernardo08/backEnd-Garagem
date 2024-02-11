@@ -23,24 +23,24 @@ class CreateCarrosTable extends Migration
             $table->string('cambio');
             $table->string('km_atual');
             $table->string('ano_fabricacao');
-            $table->string('final_placa');
+            $table->string('final_placa')->nullable();
             $table->string('cor');
             $table->string('categoria');
             $table->text('descricao')->nullable();
 
-            $table->boolean('ar_condicionado');
-            $table->boolean('ar_quente');
-            $table->boolean('air_bag_dianteiro');
-            $table->boolean('air_bag_traseiro');
-            $table->boolean('vidro_eletrico_dianteiro');
-            $table->boolean('vidro_eletrico_traseiro');
-            $table->boolean('multimidea');
-            $table->boolean('camera_re');
-            $table->boolean('alarme');
-            $table->boolean('travas_eletricas');
-            $table->boolean('computador_bordo');
-            $table->boolean('regulagem_banco');
-            $table->boolean('regulagem_volante');
+            $table->boolean('ar_condicionado')->nullable();
+            $table->boolean('ar_quente')->nullable();
+            $table->boolean('air_bag_dianteiro')->nullable();
+            $table->boolean('air_bag_traseiro')->nullable();
+            $table->boolean('vidro_eletrico_dianteiro')->nullable();
+            $table->boolean('vidro_eletrico_traseiro')->nullable();
+            $table->boolean('multimidea')->nullable();
+            $table->boolean('camera_re')->nullable();
+            $table->boolean('alarme')->nullable();
+            $table->boolean('travas_eletricas')->nullable();
+            $table->boolean('computador_bordo')->nullable();
+            $table->boolean('regulagem_banco')->nullable();
+            $table->boolean('regulagem_volante')->nullable();
 
             $table->string('placa');
             $table->boolean('ipva_pago')->nullable();

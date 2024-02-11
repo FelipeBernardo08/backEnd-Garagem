@@ -20,10 +20,7 @@ class ImagemCarroController extends Controller
      */
     public function index()
     {
-        $response = $this->imagem->all();
-        if($response == NULL){
-            return response()->json(['erro' => 'Dados não encontrados!'], 404);
-        }
+        $response = $this->imagem::latest('created_at')->first();
         return response()->json($response, 200);
     }
 
@@ -149,5 +146,11 @@ class ImagemCarroController extends Controller
         }
         return response()->json($response, 200);
 
+    }
+
+    public function ultimoDado()
+    {
+        $ultimoDado = $this->imagem::latest('created_at')->first();
+        return response()->json($ultimoDado);
     }
 }
