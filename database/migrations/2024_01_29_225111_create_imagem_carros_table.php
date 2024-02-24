@@ -23,7 +23,7 @@ class CreateImagemCarrosTable extends Migration
             $table->string('img6')->nullable();
             $table->string('img7')->nullable();
             $table->string('img8')->nullable();
-            $table->softDeletes();
+            $table->softDeletes()->nullable();
             $table->timestamps();
         });
     }

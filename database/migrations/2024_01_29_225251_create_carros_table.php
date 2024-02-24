@@ -54,7 +54,7 @@ class CreateCarrosTable extends Migration
             $table->unsignedBigInteger('fotos')->nullable();
             
             $table->foreign('fotos')->references('id')->on('imagem_carros')->onDelete('cascade');
-            $table->softDeletes();
+            $table->softDeletes()->nullable();
             $table->timestamps();
         });
     }
