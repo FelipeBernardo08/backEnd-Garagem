@@ -13,6 +13,8 @@ class ImagemCarroController extends Controller
     public function __construct(ImagemCarro $imagens){
         $this->imagem = $imagens;
     }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -53,10 +55,50 @@ class ImagemCarroController extends Controller
             $urn3 = null;
         }
 
+        $img4 = $request->file('img4');
+        if($img4){
+            $urn4 = $img4->store('imagens', 'public');
+        }else{
+            $urn4 = null;
+        }
+
+        $img5 = $request->file('img5');
+        if($img5){
+            $urn5 = $img5->store('imagens', 'public');
+        }else{
+            $urn5 = null;
+        }
+
+        $img6 = $request->file('img6');
+        if($img6){
+            $urn6 = $img6->store('imagens', 'public');
+        }else{
+            $urn6 = null;
+        }
+
+        $img7 = $request->file('img7');
+        if($img7){
+            $urn7 = $img7->store('imagens', 'public');
+        }else{
+            $urn7 = null;
+        }
+
+        $img8 = $request->file('img8');
+        if($img8){
+            $urn8 = $img8->store('imagens', 'public');
+        }else{
+            $urn8 = null;
+        }
+
         $response = $this->imagem->create([
             'img1' => $urn1,
             'img2' => $urn2,
-            'img3' => $urn3
+            'img3' => $urn3,
+            'img4' => $urn4,
+            'img5' => $urn5,
+            'img6' => $urn6,
+            'img7' => $urn7,
+            'img8' => $urn8
         ]);
 
         if($response == NULL){
@@ -98,10 +140,20 @@ class ImagemCarroController extends Controller
         $img1 = $response->img1;
         $img2 = $response->img2;
         $img3 = $response->img3;
+        $img4 = $response->img4;
+        $img5 = $response->img5;
+        $img6 = $response->img6;
+        $img7 = $response->img7;
+        $img8 = $response->img8;
 
         $imagem1 = $request->file('img1');
         $imagem2 = $request->file('img2');
         $imagem3 = $request->file('img3');
+        $imagem4 = $request->file('img4');
+        $imagem5 = $request->file('img5');
+        $imagem6 = $request->file('img6');
+        $imagem7 = $request->file('img7');
+        $imagem8 = $request->file('img8');
 
         if($imagem1){
             Storage::disk('public')->delete($img1);
@@ -144,13 +196,80 @@ class ImagemCarroController extends Controller
                 'img3' => $imagem_urn
             ]);
         }
+
+        
+        if($imagem4){
+            Storage::disk('public')->delete($img4);
+            $imagem_urn = $imagem4->store('imagens', 'public');
+            $response->update([
+                'img4' => $imagem_urn
+            ]);
+        }else{
+            Storage::disk('public')->delete($img4);
+            $imagem_urn = null;
+            $response->update([
+                'img4' => $imagem_urn
+            ]);
+        }
+
+        if($imagem5){
+            Storage::disk('public')->delete($img5);
+            $imagem_urn = $imagem5->store('imagens', 'public');
+            $response->update([
+                'img5' => $imagem_urn
+            ]);
+        }else{
+            Storage::disk('public')->delete($img5);
+            $imagem_urn = null;
+            $response->update([
+                'img5' => $imagem_urn
+            ]);
+        }
+
+        if($imagem6){
+            Storage::disk('public')->delete($img6);
+            $imagem_urn = $imagem6->store('imagens', 'public');
+            $response->update([
+                'img6' => $imagem_urn
+            ]);
+        }else{
+            Storage::disk('public')->delete($img6);
+            $imagem_urn = null;
+            $response->update([
+                'img6' => $imagem_urn
+            ]);
+        }
+
+        if($imagem7){
+            Storage::disk('public')->delete($img7);
+            $imagem_urn = $imagem7->store('imagens', 'public');
+            $response->update([
+                'img7' => $imagem_urn
+            ]);
+        }else{
+            Storage::disk('public')->delete($img7);
+            $imagem_urn = null;
+            $response->update([
+                'img7' => $imagem_urn
+            ]);
+        }
+
+        if($imagem8){
+            Storage::disk('public')->delete($img8);
+            $imagem_urn = $imagem8->store('imagens', 'public');
+            $response->update([
+                'img8' => $imagem_urn
+            ]);
+        }else{
+            Storage::disk('public')->delete($img8);
+            $imagem_urn = null;
+            $response->update([
+                'img8' => $imagem_urn
+            ]);
+        }
+
+
         return response()->json($response, 200);
 
-    }
-
-    public function ultimoDado()
-    {
-        $ultimoDado = $this->imagem::latest('created_at')->first();
-        return response()->json($ultimoDado);
     }
 }
