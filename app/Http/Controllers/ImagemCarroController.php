@@ -109,175 +109,12 @@ class ImagemCarroController extends Controller
         return response()->json($request, 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  Integer
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $response = $this->imagem->find($id);
-        if($response == NULL){
-            return response()->json(['erro' => 'Dados não encontrados!'], 404);
-        }
-        return response()->json($response, 200);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Integer
-     * @return \Illuminate\Http\Response
-     */
-    // public function update(Request $request, $id)
-    // {
-    //     $response = $this->imagem->find($id);
-    //     if($response == NULL){
-    //         return response()->json(['erro' => 'Dados nao encontrados'], 404);
-    //     }
-    //     $img1 = $response->img1;
-    //     $img2 = $response->img2;
-    //     $img3 = $response->img3;
-    //     $img4 = $response->img4;
-    //     $img5 = $response->img5;
-    //     $img6 = $response->img6;
-    //     $img7 = $response->img7;
-    //     $img8 = $response->img8;
-
-    //     $imagem1 = $request->file('img1');
-    //     $imagem2 = $request->file('img2');
-    //     $imagem3 = $request->file('img3');
-    //     $imagem4 = $request->file('img4');
-    //     $imagem5 = $request->file('img5');
-    //     $imagem6 = $request->file('img6');
-    //     $imagem7 = $request->file('img7');
-    //     $imagem8 = $request->file('img8');
-
-    //     if($imagem1){
-    //         Storage::disk('public')->delete($img1);
-    //         $imagem_urn = $imagem1->store('imagens', 'public');
-    //         $response->update([
-    //             'img1' => $imagem_urn
-    //         ]);
-    //     }else{
-    //         Storage::disk('public')->delete($img1);
-    //         $imagem_urn = null;
-    //         $response->update([
-    //             'img1' => $imagem_urn
-    //         ]);
-    //     }
-
-    //     if($imagem2){
-    //         Storage::disk('public')->delete($img2);
-    //         $imagem_urn = $imagem2->store('imagens', 'public');
-    //         $response->update([
-    //             'img2' => $imagem_urn
-    //         ]);
-    //     }else{
-    //         Storage::disk('public')->delete($img2);
-    //         $imagem_urn = null;
-    //         $response->update([
-    //             'img2' => $imagem_urn
-    //         ]);
-    //     }
-
-    //     if($imagem3){
-    //         Storage::disk('public')->delete($img3);
-    //         $imagem_urn = $imagem3->store('imagens', 'public');
-    //         $response->update([
-    //             'img3' => $imagem_urn
-    //         ]);
-    //     }else{
-    //         Storage::disk('public')->delete($img3);
-    //         $imagem_urn = null;
-    //         $response->update([
-    //             'img3' => $imagem_urn
-    //         ]);
-    //     }
-
-        
-    //     if($imagem4){
-    //         Storage::disk('public')->delete($img4);
-    //         $imagem_urn = $imagem4->store('imagens', 'public');
-    //         $response->update([
-    //             'img4' => $imagem_urn
-    //         ]);
-    //     }else{
-    //         Storage::disk('public')->delete($img4);
-    //         $imagem_urn = null;
-    //         $response->update([
-    //             'img4' => $imagem_urn
-    //         ]);
-    //     }
-
-    //     if($imagem5){
-    //         Storage::disk('public')->delete($img5);
-    //         $imagem_urn = $imagem5->store('imagens', 'public');
-    //         $response->update([
-    //             'img5' => $imagem_urn
-    //         ]);
-    //     }else{
-    //         Storage::disk('public')->delete($img5);
-    //         $imagem_urn = null;
-    //         $response->update([
-    //             'img5' => $imagem_urn
-    //         ]);
-    //     }
-
-    //     if($imagem6){
-    //         Storage::disk('public')->delete($img6);
-    //         $imagem_urn = $imagem6->store('imagens', 'public');
-    //         $response->update([
-    //             'img6' => $imagem_urn
-    //         ]);
-    //     }else{
-    //         Storage::disk('public')->delete($img6);
-    //         $imagem_urn = null;
-    //         $response->update([
-    //             'img6' => $imagem_urn
-    //         ]);
-    //     }
-
-    //     if($imagem7){
-    //         Storage::disk('public')->delete($img7);
-    //         $imagem_urn = $imagem7->store('imagens', 'public');
-    //         $response->update([
-    //             'img7' => $imagem_urn
-    //         ]);
-    //     }else{
-    //         Storage::disk('public')->delete($img7);
-    //         $imagem_urn = null;
-    //         $response->update([
-    //             'img7' => $imagem_urn
-    //         ]);
-    //     }
-
-    //     if($imagem8){
-    //         Storage::disk('public')->delete($img8);
-    //         $imagem_urn = $imagem8->store('imagens', 'public');
-    //         $response->update([
-    //             'img8' => $imagem_urn
-    //         ]);
-    //     }else{
-    //         Storage::disk('public')->delete($img8);
-    //         $imagem_urn = null;
-    //         $response->update([
-    //             'img8' => $imagem_urn
-    //         ]);
-    //     }
-
-
-    //     return response()->json($response, 200);
-
-    // }
-
     public function updateImgCarro(Request $request, $id){
         $response = $this->imagem->find($id);
         if($response == NULL){
             return response()->json(['erro' => 'Dados nao encontrados'], 404);
         }
+
         $img1 = $response->img1;
         $img2 = $response->img2;
         $img3 = $response->img3;
@@ -296,7 +133,7 @@ class ImagemCarroController extends Controller
         $imagem7 = $request->file('img7');
         $imagem8 = $request->file('img8');
 
-        if($imagem1){
+        if($imagem1 != null){
             Storage::disk('public')->delete($img1);
             $imagem_urn = $imagem1->store('imagens', 'public');
             $response->update([
@@ -310,7 +147,7 @@ class ImagemCarroController extends Controller
             ]);
         }
 
-        if($imagem2){
+        if($imagem2 != null){
             Storage::disk('public')->delete($img2);
             $imagem_urn = $imagem2->store('imagens', 'public');
             $response->update([
@@ -324,7 +161,7 @@ class ImagemCarroController extends Controller
             ]);
         }
 
-        if($imagem3){
+        if($imagem3 != null){
             Storage::disk('public')->delete($img3);
             $imagem_urn = $imagem3->store('imagens', 'public');
             $response->update([
@@ -339,7 +176,7 @@ class ImagemCarroController extends Controller
         }
 
         
-        if($imagem4){
+        if($imagem4 != null){
             Storage::disk('public')->delete($img4);
             $imagem_urn = $imagem4->store('imagens', 'public');
             $response->update([
@@ -353,7 +190,7 @@ class ImagemCarroController extends Controller
             ]);
         }
 
-        if($imagem5){
+        if($imagem5 != null){
             Storage::disk('public')->delete($img5);
             $imagem_urn = $imagem5->store('imagens', 'public');
             $response->update([
@@ -367,7 +204,7 @@ class ImagemCarroController extends Controller
             ]);
         }
 
-        if($imagem6){
+        if($imagem6 != null){
             Storage::disk('public')->delete($img6);
             $imagem_urn = $imagem6->store('imagens', 'public');
             $response->update([
@@ -381,7 +218,7 @@ class ImagemCarroController extends Controller
             ]);
         }
 
-        if($imagem7){
+        if($imagem7 != null){
             Storage::disk('public')->delete($img7);
             $imagem_urn = $imagem7->store('imagens', 'public');
             $response->update([
@@ -395,7 +232,7 @@ class ImagemCarroController extends Controller
             ]);
         }
 
-        if($imagem8){
+        if($imagem8 != null){
             Storage::disk('public')->delete($img8);
             $imagem_urn = $imagem8->store('imagens', 'public');
             $response->update([
