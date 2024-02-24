@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarroController;
 use App\Http\Controllers\ImagemCarroController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,6 @@ Route::apiResource('cliente', 'App\Http\Controllers\ClienteController');
 Route::apiResource('venda', 'App\Http\Controllers\VendasController');
 Route::apiResource('imgCarro', 'App\Http\Controllers\ImagemCarroController');
 Route::apiResource('imgMoto', 'App\Http\Controllers\ImagemMotoController');
+
+Route::post('atualzar-imagem-carro/{id}', [ImagemCarroController::class, 'updateImgCarro']);
 
