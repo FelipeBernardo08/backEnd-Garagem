@@ -28,4 +28,5 @@ Route::apiResource('imgCarro', 'App\Http\Controllers\ImagemCarroController');
 Route::apiResource('imgMoto', 'App\Http\Controllers\ImagemMotoController');
 
 Route::post('atualzar-imagem-carro/{id}', [ImagemCarroController::class, 'updateImgCarro']);
+Route::post('apagar-imagem-carro/{id}', [ImagemCarroController::class, 'apagarImg']);
 
