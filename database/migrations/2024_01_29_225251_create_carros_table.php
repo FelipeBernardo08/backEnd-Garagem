@@ -27,6 +27,7 @@ class CreateCarrosTable extends Migration
             $table->string('cor');
             $table->string('categoria');
             $table->text('descricao')->nullable();
+            $table->string('portas');
 
             $table->boolean('ar_condicionado')->nullable();
             $table->boolean('ar_quente')->nullable();
@@ -47,7 +48,7 @@ class CreateCarrosTable extends Migration
             $table->float('ipva_valor')->nullable();
             $table->float('fipe')->nullable();
             $table->float('valor_pago');    
-            $table->float('porcentagem_maxima');
+            $table->float('porcentagem_maxima')->nullable();
             $table->float('valor'); 
             $table->boolean('vendido')->nullable();
 

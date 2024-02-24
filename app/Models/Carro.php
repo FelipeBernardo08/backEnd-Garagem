@@ -25,6 +25,7 @@ class Carro extends Model
         "cor",
         "descricao",
         "categoria",
+        "portas",
 
         "ar_condicionado",
         "ar_quente",
