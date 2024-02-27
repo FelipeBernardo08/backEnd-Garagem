@@ -23,7 +23,7 @@ class CreateMotosTable extends Migration
             $table->string('cambio');
             $table->string('km_atual');
             $table->string('ano_fabricacao');
-            $table->string('final_placa');
+            $table->string('final_placa')->nullable();
             $table->string('cor');
             $table->string('descricao')->nullable();
 

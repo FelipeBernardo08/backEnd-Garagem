@@ -13,33 +13,39 @@ class Moto extends Model
     use SoftDeletes;
 
     public $fillable = [
-        "marca",
-        "modelo",
-        "potencia_motor",
-        "combustivel",
-        "freio",
-        "cambio",
-        "km_atual",
-        "ano_fabricacao",
+        "marca",//
+        "modelo",//
+        "potencia_motor",//
+        "combustivel",//
+        "freio",//
+        "cambio",//
+        "km_atual",//
+        "ano_fabricacao",//
         "final_placa",
-        "cor",
-        "descricao",
+        "cor",//
+        "descricao",//
         
-        "freio_abs",
-        "alarme",
-        "injecao_eletronica",
-        "carregador_12v",
+        "freio_abs",//
+        "alarme",//
+        "injecao_eletronica",//
+        "carregador_12v",//
         "partida_eletrica",
 
-        "placa",
+        "placa",//
         "ipva_pago",
-        "ipva_valor",
-        "fipe",
-        "valor_pago",
-        "porcentagem_maxima",
-        "valor",
+        "ipva_valor",//
+        "fipe",//
+        "valor_pago",//
+        "porcentagem_maxima",//
+        "valor",//
         "vendido",
 
         'fotos'
     ];
+
+    public function fotos()
+    {
+        return $this->belongsTo(ImagemMoto::class, 'fotos');
+    }
 }
+

@@ -19,7 +19,7 @@ class MotoController extends Controller
      */
     public function index()
     {
-        $response = $this->moto->all();
+        $response = $this->moto->with('fotos')->get();
         if($response == NULL){
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
         }
