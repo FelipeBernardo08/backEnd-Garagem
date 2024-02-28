@@ -49,7 +49,7 @@ class MotoController extends Controller
      */
     public function show($id)
     {
-        $response = $this->moto->find($id);
+        $response = $this->moto->with('fotos')->find($id);
         if($response == NULL){
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
         }

@@ -108,7 +108,7 @@ class ImagemMotoController extends Controller
         return response()->json($request, 200);
     }
 
-    public function updateImgCarro(Request $request, $id){
+    public function updateImgMoto(Request $request, $id){
         $response = $this->imagem->find($id);
         if($response == NULL){
             return response()->json(['erro' => 'Dados nao encontrados'], 404);

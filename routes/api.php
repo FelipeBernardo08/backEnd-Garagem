@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarroController;
 use App\Http\Controllers\ImagemCarroController;
+use App\Http\Controllers\ImagemMotoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,7 @@ Route::apiResource('imgMoto', 'App\Http\Controllers\ImagemMotoController');
 
 Route::post('atualzar-imagem-carro/{id}', [ImagemCarroController::class, 'updateImgCarro']);
 Route::post('apagar-imagem-carro/{id}', [ImagemCarroController::class, 'apagarImg']);
+
+Route::post('atualzar-imagem-moto/{id}', [ImagemMotoController::class, 'updateImgMoto']);
+Route::post('apagar-imagem-moto/{id}', [ImagemMotoController::class, 'apagarImg']);
 
