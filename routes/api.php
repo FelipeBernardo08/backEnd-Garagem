@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarroController;
 use App\Http\Controllers\ImagemCarroController;
 use App\Http\Controllers\ImagemMotoController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,4 @@ Route::post('apagar-imagem-carro/{id}', [ImagemCarroController::class, 'apagarIm
 Route::post('atualzar-imagem-moto/{id}', [ImagemMotoController::class, 'updateImgMoto']);
 Route::post('apagar-imagem-moto/{id}', [ImagemMotoController::class, 'apagarImg']);
 
+Route::get('recuperarUser', [UserController::class, 'getClientes']);
