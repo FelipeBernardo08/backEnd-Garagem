@@ -9,7 +9,8 @@ class CarroController extends Controller
 {
     public $carro;
 
-    public function __construct(Carro $carros){
+    public function __construct(Carro $carros)
+    {
         //commit
         $this->carro = $carros;
     }
@@ -22,7 +23,7 @@ class CarroController extends Controller
     public function index()
     {
         $response = $this->carro->with('fotos')->get();
-        if($response == NULL){
+        if ($response == NULL) {
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
         }
         return response()->json($response, 200);
@@ -37,7 +38,7 @@ class CarroController extends Controller
     public function store(Request $request)
     {
         $response = $this->carro->create($request->all());
-        if($response == NULL){
+        if ($response == NULL) {
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
         }
         return response()->json($response, 200);
@@ -52,7 +53,7 @@ class CarroController extends Controller
     public function show($id)
     {
         $response = $this->carro->with('fotos')->find($id);
-        if($response == NULL){
+        if ($response == NULL) {
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
         }
         return response()->json($response, 200);
@@ -68,7 +69,7 @@ class CarroController extends Controller
     public function update(Request $request, $id)
     {
         $response = $this->carro->find($id);
-        if($response == NULL){
+        if ($response == NULL) {
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
         }
         $response->update($request->all());
@@ -84,7 +85,7 @@ class CarroController extends Controller
     public function destroy($id)
     {
         $response = $this->carro->find($id);
-        if($response == NULL){
+        if ($response == NULL) {
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
         }
         $response->delete();

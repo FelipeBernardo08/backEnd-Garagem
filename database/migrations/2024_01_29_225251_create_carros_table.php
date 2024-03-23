@@ -47,13 +47,13 @@ class CreateCarrosTable extends Migration
             $table->boolean('ipva_pago')->nullable();
             $table->float('ipva_valor')->nullable();
             $table->float('fipe')->nullable();
-            $table->float('valor_pago');    
+            $table->float('valor_pago');
             $table->float('porcentagem_maxima')->nullable();
-            $table->float('valor'); 
+            $table->float('valor');
             $table->boolean('vendido')->nullable();
 
             $table->unsignedBigInteger('fotos')->nullable();
-            
+
             $table->foreign('fotos')->references('id')->on('imagem_carros')->onDelete('cascade');
             $table->softDeletes()->nullable();
             $table->timestamps();
