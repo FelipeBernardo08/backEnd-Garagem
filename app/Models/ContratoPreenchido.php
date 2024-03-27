@@ -23,4 +23,10 @@ class ContratoPreenchido extends Model
     {
         return $this->belongsTo(Vendas::class, 'id_venda', 'id');
     }
+
+
+    public function contrato()
+    {
+        return $this->belongsTo(contratos::class, 'id_contrato', 'id');
+    }
 }
