@@ -8,22 +8,18 @@ use Illuminate\Http\Request;
 
 class ContratoPreenchidoController extends Controller
 {
+    public $contratoPreenchido;
+
+    public function __construct(ContratoPreenchido $contrato)
+    {
+        $this->contratoPreenchido = $contrato;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
         //
     }
@@ -36,29 +32,26 @@ class ContratoPreenchidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = $this->contratoPreenchido->create($request->all());
+        if ($response == null) {
+            return response()->json(['erro' => 'Dados nao criados'], 404);
+        }
+        return response()->json($response, 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ContratoPreenchido  $contratoPreenchido
+     * @param  Integer
      * @return \Illuminate\Http\Response
      */
-    public function show(ContratoPreenchido $contratoPreenchido)
+    public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ContratoPreenchido  $contratoPreenchido
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ContratoPreenchido $contratoPreenchido)
-    {
-        //
+        $response = $this->contratoPreenchido->with('venda')->find($id);
+        if ($response == null) {
+            return response()->json(['erro' => 'Dados nao encontrados'], 404);
+        }
+        return response()->json($response, 200);
     }
 
     /**

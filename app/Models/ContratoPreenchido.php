@@ -18,4 +18,9 @@ class ContratoPreenchido extends Model
         'id_carro',
         'id_venda'
     ];
+
+    public function venda()
+    {
+        return $this->belongsTo(Vendas::class, 'id_venda', 'id');
+    }
 }
