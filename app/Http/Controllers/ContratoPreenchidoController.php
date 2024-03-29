@@ -47,7 +47,12 @@ class ContratoPreenchidoController extends Controller
      */
     public function show($id)
     {
-        $response = $this->contratoPreenchido->with('venda')->with('contrato')->find($id);
+        $response = $this->contratoPreenchido->with('venda.carro')
+            ->with('venda.cliente')
+            ->with('venda.moto')
+            ->with('venda.vendedor')
+            ->with('contrato')
+            ->find($id);
         if ($response == null) {
             return response()->json(['erro' => 'Dados nao encontrados'], 404);
         }
