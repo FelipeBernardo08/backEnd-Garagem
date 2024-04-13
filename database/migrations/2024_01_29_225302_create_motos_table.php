@@ -34,6 +34,7 @@ class CreateMotosTable extends Migration
             $table->boolean('partida_eletrica');
 
             $table->string('placa');
+            $table->string('chassis');
             $table->boolean('ipva_pago')->nullable();
             $table->float('ipva_valor')->nullable();
             $table->float('fipe')->nullable();
@@ -43,7 +44,7 @@ class CreateMotosTable extends Migration
             $table->boolean('vendido')->nullable();
 
             $table->unsignedBigInteger('fotos')->nullable();
-            
+
             $table->foreign('fotos')->references('id')->on('imagem_motos')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

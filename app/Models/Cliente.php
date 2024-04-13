@@ -20,6 +20,7 @@ class Cliente extends Model
         "end_numero",
         "end_bairro",
         "end_cidade",
-        "end_estado"
+        "end_estado",
+        "end_cep"
     ];
 }

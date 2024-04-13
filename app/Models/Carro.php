@@ -45,6 +45,7 @@ class Carro extends Model
         "ipva_valor",
         "fipe",
         "placa",
+        "chassis",
         "valor_pago",
         "porcentagem_maxima",
         "valor",
