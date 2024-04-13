@@ -24,7 +24,7 @@ class Moto extends Model
         "final_placa",
         "cor",//
         "descricao",//
-        
+
         "freio_abs",//
         "alarme",//
         "injecao_eletronica",//
@@ -32,6 +32,7 @@ class Moto extends Model
         "partida_eletrica",
 
         "placa",//
+        "chassis",
         "ipva_pago",
         "ipva_valor",//
         "fipe",//

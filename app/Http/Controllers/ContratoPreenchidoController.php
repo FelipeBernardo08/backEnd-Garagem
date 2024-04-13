@@ -21,9 +21,17 @@ class ContratoPreenchidoController extends Controller
      */
     public function index()
     {
-        //
+        $response = $this->contratoPreenchido->with('venda.carro')
+            ->with('venda.cliente')
+            ->with('venda.moto')
+            ->with('venda.vendedor')
+            ->with('contrato')
+            ->get();
+        if ($response == null) {
+            return response()->json(['Erro' => 'Dados não encontrados!'], 404);
+        }
+        return response()->json($response, 200);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -60,25 +68,20 @@ class ContratoPreenchidoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ContratoPreenchido  $contratoPreenchido
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ContratoPreenchido $contratoPreenchido)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ContratoPreenchido  $contratoPreenchido
+     * @param  Integer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContratoPreenchido $contratoPreenchido)
+    public function destroy($id)
     {
-        //
+        $response = $this->contratoPreenchido->find($id);
+        if ($response == null) {
+            return response()->json(['erro' => 'Dados não encontrados!'], 404);
+        } else {
+            $response->delete();
+            return response()->json(['msg' => 'Dados excluidos com sucesso!'], 200);
+        }
+
     }
 }

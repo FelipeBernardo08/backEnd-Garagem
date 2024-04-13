@@ -44,6 +44,7 @@ class CreateCarrosTable extends Migration
             $table->boolean('regulagem_volante')->nullable();
 
             $table->string('placa');
+            $table->string('chassis');
             $table->boolean('ipva_pago')->nullable();
             $table->float('ipva_valor')->nullable();
             $table->float('fipe')->nullable();

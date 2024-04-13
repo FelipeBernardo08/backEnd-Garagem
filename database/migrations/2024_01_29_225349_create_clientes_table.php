@@ -24,6 +24,7 @@ class CreateClientesTable extends Migration
             $table->string('end_bairro');
             $table->string('end_cidade');
             $table->string('end_estado');
+            $table->string('end_cep');
             $table->softDeletes();
             $table->timestamps();
         });
