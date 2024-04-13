@@ -68,6 +68,7 @@ class CarroController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
         $response = $this->carro->find($id);
         if ($response == NULL) {
             return response()->json(['erro' => 'Dados não encontrados!'], 404);
