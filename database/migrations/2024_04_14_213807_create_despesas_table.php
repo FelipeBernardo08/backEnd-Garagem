@@ -17,11 +17,11 @@ class CreateDespesasTable extends Migration
             $table->id();
             $table->float('valor');
             $table->text('descricao');
-            $table->unsignedBigInteger('id_cliente');
-            $table->unsignedBigInteger('id_carro');
-            $table->unsignedBigInteger('id_moto');
-            $table->unsignedBigInteger('id_venda');
-            $table->unsignedBigInteger('id_vendedor');
+            $table->unsignedBigInteger('id_cliente')->nullable();
+            $table->unsignedBigInteger('id_carro')->nullable();
+            $table->unsignedBigInteger('id_moto')->nullable();
+            $table->unsignedBigInteger('id_venda')->nullable();
+            $table->unsignedBigInteger('id_vendedor')->nullable();
 
             $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade');
             $table->foreign('id_carro')->references('id')->on('carros')->onDelete('cascade');
