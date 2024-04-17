@@ -17,7 +17,8 @@ class Vendas extends Model
         'id_carro',
         'id_moto',
         'id_vendedor',
-        'valor_total'
+        'valor_total',
+        'forma_pgto'
     ];
 
     public function cliente()
