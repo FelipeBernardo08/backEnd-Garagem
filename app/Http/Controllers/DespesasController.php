@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class DespesasController extends Controller
 {
+    public $despesas;
+
+    public function __construct(despesas $despesa)
+    {
+        $this->despesas = $despesa;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,18 +22,13 @@ class DespesasController extends Controller
      */
     public function index()
     {
-        //
+        $response = $this->despesas->all();
+        if ($response == null) {
+            return response()->json(['Erro' => 'Dados não encontrados"'], 404);
+        }
+        return response()->json($response, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,51 +38,59 @@ class DespesasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = $this->despesas->create($request->all());
+        if ($response == null) {
+            return response()->json(['Erro' => 'Dados não encontrados"'], 404);
+        }
+        return response()->json($response, 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\despesas  $despesas
+     * @param  Integer
      * @return \Illuminate\Http\Response
      */
-    public function show(despesas $despesas)
+    public function show($id)
     {
-        //
+        $response = $this->despesas->find($id);
+        if ($response == null) {
+            return response()->json(['Erro' => 'Dados não encontrados!'], 404);
+        }
+        return response()->json($response, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\despesas  $despesas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(despesas $despesas)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\despesas  $despesas
+     * @param  integer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, despesas $despesas)
+    public function update(Request $request, $id)
     {
-        //
+        $response = $this->despesas->find($id);
+        if ($response == null) {
+            return response()->json(['Erro' => 'Dados não encontrados!'], 404);
+        }
+        $response->update($request->all());
+        return response()->json($response, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\despesas  $despesas
+     * @param  integer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(despesas $despesas)
+    public function destroy($id)
     {
-        //
+        $response = $this->despesas->find($id);
+        if ($response == null) {
+            return response()->json(['Erro' => 'Dados não encontrados!'], 404);
+        }
+        $response->delete();
+        return response()->json(['MSG' => 'Dados excluidos com sucesso!'], 200);
     }
 }

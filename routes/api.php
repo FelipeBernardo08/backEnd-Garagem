@@ -30,6 +30,7 @@ Route::apiResource('imgCarro', 'App\Http\Controllers\ImagemCarroController');
 Route::apiResource('imgMoto', 'App\Http\Controllers\ImagemMotoController');
 Route::apiResource('contrato', 'App\Http\Controllers\ContratosController');
 Route::apiResource('contratoVinculado', 'App\Http\Controllers\ContratoPreenchidoController');
+Route::apiResource('despesas', 'App\Http\Controllers\DespesasController');
 
 Route::post('atualzar-imagem-carro/{id}', [ImagemCarroController::class, 'updateImgCarro']);
 Route::post('apagar-imagem-carro/{id}', [ImagemCarroController::class, 'apagarImg']);
