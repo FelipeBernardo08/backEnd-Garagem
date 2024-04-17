@@ -20,6 +20,8 @@ class CreateVendasTable extends Migration
             $table->unsignedBigInteger('id_moto')->nullable();
             $table->unsignedBigInteger('id_vendedor');
             $table->float('valor_total');
+            $table->string('forma_pgto');
+            $table->text('observacao');
 
             $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade');
             $table->foreign('id_carro')->references('id')->on('carros')->onDelete('cascade');
