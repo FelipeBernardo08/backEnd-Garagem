@@ -22,7 +22,13 @@ class DespesasController extends Controller
      */
     public function index()
     {
-        $response = $this->despesas->all();
+        $response = $this->despesas
+        ->with('carro')
+        ->with('moto')
+        ->with('vendedor')
+        ->with('cliente')
+        ->with('venda')
+        ->get();
         if ($response == null) {
             return response()->json(['Erro' => 'Dados não encontrados"'], 404);
         }
@@ -53,7 +59,13 @@ class DespesasController extends Controller
      */
     public function show($id)
     {
-        $response = $this->despesas->find($id);
+        $response = $this->despesas
+        ->with('carro')
+        ->with('moto')
+        ->with('vendedor')
+        ->with('cliente')
+        ->with('venda')
+        ->find($id);
         if ($response == null) {
             return response()->json(['Erro' => 'Dados não encontrados!'], 404);
         }
